@@ -16,14 +16,45 @@
       <div class="card-body">
         <h4 class="card-title" >Select Resource</h4>
         <div>
-          <select type="number" [(ngModel)]="resource">
-            <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
-          </select>
+          <Form>
+            <input type="text" placeholder="Enter Location" [(ngModel)]="location">
+            <br>
+            <br>
+            <select type="number" [(ngModel)]="resource">
+              <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
+            </select>
+          </Form>
+          <br>
+            <br>
+            <button class="btn btn-primary"  (click)="searchResource()">Search</button>
         </div>
-        <br>
-        <br>
-        <button class="btn btn-primary" (click)="searchResource()">Search</button>
       </div>
+      </div>
+      <div *ngIf="isData == true">
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+  
+          <ng-container matColumnDef="seqNo">
+              <mat-header-cell *matHeaderCellDef>Seq No</mat-header-cell>
+              <mat-cell *matCellDef="let lesson">{{lesson.seqNo}}</mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="full_text">
+              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+              <mat-cell class="description-cell"
+                        *matCellDef="let lesson">{{lesson.full_text}}</mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="phoneNo">
+              <mat-header-cell *matHeaderCellDef>Phone No</mat-header-cell>
+              <mat-cell class="duration-cell"
+                        *matCellDef="let lesson">{{lesson.phoneNo}}</mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          
+      </mat-table>
       </div>
   </div>
 
