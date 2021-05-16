@@ -17,6 +17,8 @@ export class AppComponent {
   configUrl = 'http://localhost:3000/users';
   // configUrl = 'https://jsonplaceholder.typicode.com/posts'
 
+  constructor(private rs : ConfigService) { }
+
   columns : Array<string> = [
     "created_at",
     "full_text",
@@ -40,29 +42,26 @@ export class AppComponent {
   res = {name: "AA"};
   resource = this.resources[0];
   location = '';
-  displayedColumns = ["seqNo", 'full_text', "phoneNo"]
+  displayedColumns = ["created_at", 'full_text', "phoneNo"]
 
-  constructor(private rs : ConfigService) { }
 
   dataSource: Array<DataElement> = [
     {
-      seqNo: 1,
+      created_at: 1,
       full_text: "Hello Brother",
       phoneNo: 2222222222
     },
     {
-      seqNo: 2,
+      created_at: 2,
       full_text: "Hello Brother 2",
       phoneNo: 1111111111
     },
     {
-      seqNo: 3,
+      created_at: 3,
       full_text: "Hello Brother 3",
       phoneNo: 3333333333
     },
   ];
-
-  dataSource1 = [];
 
   searchResource(){
     console.log(this.resource);
@@ -70,8 +69,8 @@ export class AppComponent {
 
     this.rs.getUsers().subscribe(
       response => {
-        console.log(response);
         this.users = response;
+        console.log(this.users[0]);
         this.isData = true;
       } 
     )

@@ -1,5 +1,5 @@
 export class DataElement{
-    seqNo = 1;
+    created_at = 1;
     full_text = "Hello Brother";
     phoneNo = 1
 }
