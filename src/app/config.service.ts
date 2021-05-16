@@ -10,7 +10,8 @@ export class ConfigService {
 
   constructor(private http : HttpClient) { }
 
-  url : string = "http://localhost:3000/Users/"
+  // url : string = "http://localhost:3000/Users/"
+  url : string = 'https://covid-resource-express.herokuapp.com/users'
 
 
   getUsers()

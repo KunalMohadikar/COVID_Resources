@@ -14,8 +14,8 @@ import { Users } from './common/users';
 
 export class AppComponent {
 
-  configUrl = 'http://localhost:3000/users';
-  // configUrl = 'https://jsonplaceholder.typicode.com/posts'
+  // configUrl = 'http://localhost:3000/users';
+  configUrl = 'https://covid-resource-express.herokuapp.com/users'
 
   constructor(private rs : ConfigService) { }
 
