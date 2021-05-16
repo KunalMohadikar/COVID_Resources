@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Resource } from './common/resource';
 import { DataElement } from './common/datasource';
+import { ConfigService } from './config.service';
+import { HttpClient } from '@angular/common/http';
+import { Users } from './common/users';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +14,23 @@ import { DataElement } from './common/datasource';
 
 export class AppComponent {
 
+  configUrl = 'http://localhost:3000/users';
+  // configUrl = 'https://jsonplaceholder.typicode.com/posts'
+
+  columns : Array<string> = [
+    "created_at",
+    "full_text",
+    "phoneNo"
+  ];
+
+  index : Array<string> = [
+    "created_at",
+    "full_text",
+    "phoneNo"
+  ];
+
+  users : Users[] = [];
+  
   title = 'covid';
   resources : Array<Resource> = [
     {name: "Oxygen"},
@@ -21,6 +41,8 @@ export class AppComponent {
   resource = this.resources[0];
   location = '';
   displayedColumns = ["seqNo", 'full_text', "phoneNo"]
+
+  constructor(private rs : ConfigService) { }
 
   dataSource: Array<DataElement> = [
     {
@@ -38,12 +60,21 @@ export class AppComponent {
       full_text: "Hello Brother 3",
       phoneNo: 3333333333
     },
-  ]
+  ];
+
+  dataSource1 = [];
 
   searchResource(){
     console.log(this.resource);
     console.log(this.location);
-    this.isData = true;
+
+    this.rs.getUsers().subscribe(
+      response => {
+        console.log(response);
+        this.users = response;
+        this.isData = true;
+      } 
+    )
   }
 
 }

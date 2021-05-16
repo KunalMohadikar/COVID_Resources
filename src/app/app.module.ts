@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

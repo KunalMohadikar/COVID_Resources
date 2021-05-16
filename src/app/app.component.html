@@ -56,7 +56,36 @@
           
       </mat-table>
       </div>
+
+      <div *ngIf="isData == true">
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
+  
+          <ng-container matColumnDef="created_at">
+              <mat-header-cell *matHeaderCellDef>created_at</mat-header-cell>
+              <mat-cell *matCellDef="let lesson">{{lesson.created_at}}</mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="full_text">
+              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+              <mat-cell class="description-cell"
+                        *matCellDef="let lesson">{{lesson.full_text}}</mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="phoneNo">
+              <mat-header-cell *matHeaderCellDef>Phone No</mat-header-cell>
+              <mat-cell class="duration-cell"
+                        *matCellDef="let lesson">{{lesson.phoneNo}}</mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          
+      </mat-table>
+      </div>
   </div>
+
+  
 
 </body>
 </html>
