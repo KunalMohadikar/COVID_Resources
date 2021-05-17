@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Users } from './common/users';
 
 
@@ -8,15 +8,19 @@ import { Users } from './common/users';
 })
 export class ConfigService {
 
-  constructor(private http : HttpClient) { }
+  url : string = "http://localhost:3000/Users/"
+  // url : string = 'https://covid-resource-express.herokuapp.com/users/'
 
-  // url : string = "http://localhost:3000/Users/"
-  url : string = 'https://covid-resource-express.herokuapp.com/users'
+  constructor(private http : HttpClient) {}
+
+  
 
 
   getUsers()
   {
     console.log("returning http object");
+    // const params = new HttpParams()
+    // .set('location', this.location);
     return this.http.get<Users[]>(this.url);
   }
 }

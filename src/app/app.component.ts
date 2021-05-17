@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Resource } from './common/resource';
 import { DataElement } from './common/datasource';
 import { ConfigService } from './config.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Users } from './common/users';
 
 @Component({
@@ -14,10 +14,10 @@ import { Users } from './common/users';
 
 export class AppComponent {
 
-  // configUrl = 'http://localhost:3000/users';
-  configUrl = 'https://covid-resource-express.herokuapp.com/users'
+  url : string = "http://localhost:3000/resource/"
+  // url : string = 'https://covid-resource-express.herokuapp.com/users/'
 
-  constructor(private rs : ConfigService) { }
+  constructor(private http : HttpClient) { }
 
   columns : Array<string> = [
     "created_at",
@@ -39,10 +39,11 @@ export class AppComponent {
     {name: "Para"}
   ];
   isData = false;
+  fetching = false;
   res = {name: "AA"};
-  resource = this.resources[0];
+  resource = '';
   location = '';
-  displayedColumns = ["created_at", 'full_text', "phoneNo"]
+  displayedColumns = ['full_text', "phoneNo"]
 
 
   dataSource: Array<DataElement> = [
@@ -63,17 +64,36 @@ export class AppComponent {
     },
   ];
 
+
+  getUsers()
+  {
+    console.log("returning http object");
+    const params = new HttpParams()
+    .set('location', this.location)
+    .set('resource', this.resource);
+    return this.http.get<Users[]>(this.url,{params});
+  }
+
   searchResource(){
     console.log(this.resource);
     console.log(this.location);
-
-    this.rs.getUsers().subscribe(
+    this.fetching = true;
+    this.getUsers().subscribe(
       response => {
+        response.sort(function(a,b){
+          let created1 = a.created_at;
+          let created2 = b.created_at;
+          let created1Date = new Date(created1.replace("+0000 ", "") + " UTC");
+          let created2Date = new Date(created2.replace("+0000 ", "") + " UTC");
+          return created1Date < created2Date ? 1 : -1;
+        });
         this.users = response;
         console.log(this.users[0]);
         this.isData = true;
+        this.fetching = false;
       } 
     )
+    
   }
 
 }

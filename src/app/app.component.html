@@ -14,19 +14,36 @@
     </div>
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title" >Select Resource</h4>
         <div>
           <Form>
+            <h4 class="card-title" >Enter Location</h4>
             <input type="text" placeholder="Enter Location" [(ngModel)]="location">
             <br>
             <br>
-            <select type="number" [(ngModel)]="resource">
+            <h4 class="card-title" >Enter Resource</h4>
+            <input type="text" placeholder="Enter Resource" [(ngModel)]="resource">
+            <!-- <select type="number" [(ngModel)]="resource">
               <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
-            </select>
+            </select> -->
           </Form>
           <br>
             <br>
-            <button class="btn btn-primary"  (click)="searchResource()">Search</button>
+            <table>
+              <tr>
+                <td>
+                  <button class="btn btn-primary"  (click)="searchResource()">Search</button>
+                </td>
+                <td>
+                  <div *ngIf="fetching == true">
+                    <igx-circular-bar 
+                    [animate]="false"
+                    [indeterminate]="true"
+                    [textVisibility]="false"
+                    ></igx-circular-bar>
+                  </div>
+                </td>
+              </tr>
+            </table>
         </div>
       </div>
       </div>

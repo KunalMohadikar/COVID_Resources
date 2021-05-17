@@ -12,6 +12,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { IgxProgressBarModule } from 'igniteui-angular';
+
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './config.service';
 
@@ -29,7 +31,8 @@ import { ConfigService } from './config.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    IgxProgressBarModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]
