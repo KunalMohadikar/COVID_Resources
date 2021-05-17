@@ -14,8 +14,8 @@ import { Users } from './common/users';
 
 export class AppComponent {
 
-  url : string = "http://localhost:3000/resource/"
-  // url : string = 'https://covid-resource-express.herokuapp.com/users/'
+  // url : string = "http://localhost:3000/resource/"
+  url : string = 'https://covid-resource-express.herokuapp.com/resource/'
 
   constructor(private http : HttpClient) { }
 
