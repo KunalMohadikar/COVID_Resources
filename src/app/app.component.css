@@ -5,3 +5,16 @@ mat-footer-cell,
 mat-header-cell .mat-header-cell {
   padding: 0.75rem !important;
 }
+
+.loading1 {
+  position: relative;
+  margin-top: 50px;
+  top: 35%;
+  height: 31px;
+  width: 31px;
+}
+
+.loading2 {
+  height: 50px;
+  width: 50px;
+}

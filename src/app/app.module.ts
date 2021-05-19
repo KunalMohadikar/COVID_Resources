@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './config.service';
+import { IgxProgressBarModule } from "igniteui-angular";
 
 @NgModule({
   declarations: [
@@ -30,8 +31,10 @@ import { ConfigService } from './config.service';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    IgxProgressBarModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

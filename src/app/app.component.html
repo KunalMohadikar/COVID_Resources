@@ -10,18 +10,20 @@
 
   <div class = "container">
     <div class="jumbotron">
-      <h1>COVID Resources</h1>
+      <h2>COVID Resources</h2>
     </div>
     <div class="card">
       <div class="card-body">
         <div>
           <Form>
-            <h4 class="card-title" >Enter Location</h4>
-            <input type="text" placeholder="Enter Location" [(ngModel)]="location">
+            <h5 class="card-title" >Enter Location</h5>
+            <br>
+            <input type="text" placeholder="example: Pune" [(ngModel)]="location">
             <br>
             <br>
-            <h4 class="card-title" >Enter Resource</h4>
-            <input type="text" placeholder="Enter Resource" [(ngModel)]="resource">
+            <h5 class="card-title" >Enter Resource</h5>
+            <br>
+            <input type="text" placeholder="example: Oxygen" [(ngModel)]="resource">
             <!-- <select type="number" [(ngModel)]="resource">
               <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
             </select> -->
@@ -33,17 +35,21 @@
                 <td>
                   <button class="btn btn-primary"  (click)="searchResource()">Search</button>
                 </td>
-                <td>
-                  <div *ngIf="fetching == true">
-                   <p>Loading...</p>
-                  </div>
-                </td>
               </tr>
             </table>
         </div>
       </div>
       </div>
-      <div *ngIf="isData == true">
+      <div *ngIf="fetching == true">
+        <div class="container loading1">
+         <igx-circular-bar class="loading2"
+         [animate]="false"
+         [indeterminate]="true"
+         [textVisibility]="false"
+         ></igx-circular-bar>
+        </div>
+       </div>
+      <div *ngIf="isData == true && fetching==false">
         <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
   
           <ng-container matColumnDef="created_at">
