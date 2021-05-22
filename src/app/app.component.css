@@ -18,3 +18,23 @@ mat-header-cell .mat-header-cell {
   height: 50px;
   width: 50px;
 }
+
+.mat-table{
+  width: 100%;
+}
+
+.mat-column-sno{
+  flex: 0 0 10%;
+}
+
+.mat-column-created_at{
+  flex: 0 0 20%;
+}
+
+.mat-column-full_text{
+  flex: 0 0 50%;
+}
+
+.mat-column-PhoneNo{
+  flex: 0 0 20%;
+}

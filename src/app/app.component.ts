@@ -5,6 +5,7 @@ import { ConfigService } from './config.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Users } from './common/users';
 import { DateHelper } from './common/datehelper';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
@@ -44,7 +45,7 @@ export class AppComponent {
   res = {name: "AA"};
   resource = '';
   location = '';
-  displayedColumns = ['created_at','full_text', "phoneNo"]
+  displayedColumns = ['sno','created_at','full_text', "phoneNo"]
 
 
   getUsers()

@@ -51,6 +51,11 @@
        </div>
       <div *ngIf="isData == true && fetching==false">
         <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
+
+          <ng-container matColumnDef="sno">
+            <mat-header-cell *matHeaderCellDef>Serial No.</mat-header-cell>
+            <mat-cell *matCellDef="let i = index">{{i+1}}</mat-cell>
+          </ng-container>
   
           <ng-container matColumnDef="created_at">
               <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
@@ -66,7 +71,12 @@
           <ng-container matColumnDef="phoneNo">
               <mat-header-cell *matHeaderCellDef>PhoneNo</mat-header-cell>
               <mat-cell class="duration-cell"
-                        *matCellDef="let lesson">{{lesson.phoneNo}}</mat-cell>
+                        *matCellDef="let lesson"><mat-list>
+                          <mat-list-item *ngFor="let item of lesson.phoneNo">
+                            <mat-icon color = "primary">play_arrow</mat-icon>
+                              {{ item }}
+                          </mat-list-item>
+                      </mat-list></mat-cell>
           </ng-container>
           
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

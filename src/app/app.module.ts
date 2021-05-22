@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { IgxProgressBarModule } from "igniteui-angular";
 
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -31,7 +34,9 @@ import { IgxProgressBarModule } from "igniteui-angular";
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    IgxProgressBarModule
+    IgxProgressBarModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]
