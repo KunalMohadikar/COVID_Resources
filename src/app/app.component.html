@@ -6,44 +6,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COVID Resources</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+
 </head>
 
 <body>
-  <br>
-  <div class="container">
-    <div class="jumbotron heading">
-      <h2>COVID Resources</h2>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">COVID Resources</a>
     </div>
+  </nav>
+  <div class="container">
     <div class="card customCard">
       <div class="card-body">
         <div>
           <Form>
-            <h5 class="card-title">Enter Location</h5>
-            <br>
-            <div class="input-group mb-3">
+            <div class="form-floating mb-3">
               <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
                 placeholder="example: Pune" [(ngModel)]="location" id='location'>
               <label for="location">Location</label>
             </div>
-            <br>
-            <br>
-            <h5 class="card-title">Enter Resource</h5>
-            <br>
-            <div class="input-group mb-3">
+            <div class="form-floating mb-3">
               <input type="text" class="form-control" aria-label="resource" id='resource'
                 aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resource">
               <label for="resource">Resource</label>
             </div>
+
             <!-- <select type="number" [(ngModel)]="resource">
               <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
             </select> -->
+            <div class="mb-3">
+              <button class="btn btn-primary" (click)="searchResource()">Search</button>
+            </div>
           </Form>
-          <br>
-          <br>
           <table>
             <tr>
               <td>
-                <button class="btn btn-primary" (click)="searchResource()">Search</button>
               </td>
             </tr>
           </table>
@@ -51,14 +55,15 @@
       </div>
     </div>
     <div *ngIf="fetching == true">
-      <div class="container loading1">
-        <igx-circular-bar class="loading2" [animate]="false" [indeterminate]="true" [textVisibility]="false">
-        </igx-circular-bar>
-      </div>
+      <center>
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </center>
     </div>
     <br>
     <div *ngIf="isData == true && fetching==false">
-      <mat-table class="lessons-table mat-elevation-z8" [dataSource]="users">
+      <mat-table class="table lessons-table mat-elevation-z8" [dataSource]="users">
 
         <ng-container matColumnDef="sno">
           <mat-header-cell *matHeaderCellDef>Serial No.</mat-header-cell>
@@ -93,28 +98,14 @@
 
       </mat-table>
 
-      <!-- <table id="users">
-          <tr>
-            <th *ngFor="let col of columns">
-              {{col}}
-            </th>
-          </tr>
-          <tr *ngFor="let user of users">
-            <td>
-              {{user.created_at}}
-            </td>
-            <td>
-              {{user.full_text}}
-            </td>
-            <td>
-              {{user.phoneNo}}
-            </td>
-          </tr>
-        
-        </table> -->
+
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
 
 
 </body>
