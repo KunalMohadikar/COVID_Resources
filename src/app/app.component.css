@@ -85,3 +85,12 @@ mat-header-cell .mat-header-cell {
   min-width: 1000px;  
   width: 100%;  
 } 
+
+.card1{
+  margin-bottom: 8px;
+}
+
+.cardHeader{
+  font-size: 16;
+  font-weight: 500;
+}

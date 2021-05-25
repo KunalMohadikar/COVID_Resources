@@ -6,6 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Users } from './common/users';
 import { DateHelper } from './common/datehelper';
 import { stringify } from '@angular/compiler/src/util';
+import { CommonUtils } from 'src/util/commonUtils';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,13 @@ export class AppComponent {
 
   // url : string = "http://localhost:3000/resource/"
   url : string = 'https://covid-resource-express.herokuapp.com/resource/'
+  isMobile: boolean = false;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) {
+    let commonUtils = new CommonUtils();
+    this.isMobile = commonUtils.isMobileDevice();
+    console.log(`isMobile: ${this.isMobile}`);
+  }
 
   columns : Array<string> = [
     "created_at",
