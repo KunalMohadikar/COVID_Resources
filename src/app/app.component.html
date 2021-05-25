@@ -22,15 +22,17 @@
             <br>
             <div class="input-group mb-3">
               <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
-                placeholder="example: Pune" [(ngModel)]="location">
+                placeholder="example: Pune" [(ngModel)]="location" id='location'>
+              <label for="location">Location</label>
             </div>
             <br>
             <br>
             <h5 class="card-title">Enter Resource</h5>
             <br>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-label="resource" aria-describedby="basic-addon1"
-                placeholder="example: Oxygen" [(ngModel)]="resource">
+              <input type="text" class="form-control" aria-label="resource" id='resource'
+                aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resource">
+              <label for="resource">Resource</label>
             </div>
             <!-- <select type="number" [(ngModel)]="resource">
               <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
