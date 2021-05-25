@@ -80,3 +80,8 @@ mat-header-cell .mat-header-cell {
 .mat-row:not(:nth-child(2n)){
   background-color:#ffffff;
 }
+
+.mat-row, .mat-header-row {  
+  min-width: 1000px;  
+  width: 100%;  
+} 
