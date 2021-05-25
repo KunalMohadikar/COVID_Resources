@@ -19,6 +19,8 @@ import { IgxProgressBarModule } from "igniteui-angular";
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -36,7 +38,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressSpinnerModule,
     IgxProgressBarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgSelectModule,
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]

@@ -22,11 +22,29 @@
         <div class="card customCard">
           <div class="card-body">
             <div>
-                <div class="form-floating mb-3">
+                <!-- <div class="form-floating mb-3">
                   <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
                     placeholder="example: Pune" [(ngModel)]="location" id='location'>
                   <label for="location">Location</label>
-                </div>
+                </div> -->
+                <ng-select class="custom" [items]="states"
+                  placeholder="Select State"
+                  bindLabel="name"
+                  [multiple]="false1"
+                  [searchable]="true1" 
+                  [clearable]="true1"
+                  [(ngModel)]="state"
+                  (change)="onStateChange()"
+                  (clear)="onStateClear()">
+                </ng-select>
+                <ng-select class="custom" [items]="cities"
+                  placeholder="Select City"
+                  bindLabel="name"
+                  [multiple]="false1"
+                  [searchable]="true1" 
+                  [clearable]="true1"
+                  [(ngModel)]="city">
+                </ng-select>
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" aria-label="resource" id='resource'
                     aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resource">

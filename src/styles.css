@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~@ng-select/ng-select/themes/material.theme.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ng-select.custom .ng-select-container .ng-placeholder  {        
+    min-height: 0px;
+    border-radius: 6;
+    color: #078fff;
+    border-color: #078fff;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: blue;
+  color: white;
+}
