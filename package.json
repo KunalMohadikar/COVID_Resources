@@ -36,7 +36,6 @@
     "jszip": "^3.6.0",
     "material-design-icons": "^3.0.1",
     "minireset.css": "~0.0.4",
-    "ngx-mat-select-search": "^3.3.0",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "resize-observer-polyfill": "^1.5.1",
