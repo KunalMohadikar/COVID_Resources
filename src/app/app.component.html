@@ -22,83 +22,80 @@
       <a class="navbar-brand" href="#">COVID Resources</a>
     </div>
   </nav>
-  <div class="container">
-    <div class="card customCard">
-      <div class="card-body">
-        <div>
-          <Form>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
-                placeholder="example: Pune" [(ngModel)]="location" id='location'>
-              <label for="location">Location</label>
+  <div class="container-fluid mt-1">
+    <div class="row">
+      <div class="col-md-3 col-sm-12">
+        <div class="card customCard">
+          <div class="card-body">
+            <div>
+              <Form>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
+                    placeholder="example: Pune" [(ngModel)]="location" id='location'>
+                  <label for="location">Location</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" aria-label="resource" id='resource'
+                    aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resource">
+                  <label for="resource">Resource</label>
+                </div>
+                <div class="row">
+                  <div class="col-1"></div>
+                  <button class="col-10 btn btn-primary" (click)="searchResource()">Search</button>
+                </div>
+              </Form>
             </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" aria-label="resource" id='resource'
-                aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resource">
-              <label for="resource">Resource</label>
-            </div>
-
-            <!-- <select type="number" [(ngModel)]="resource">
-              <option *ngFor="let res of resources" [ngValue]="res">{{res.name}}</option>
-            </select> -->
-            <div class="mb-3">
-              <button class="btn btn-primary" (click)="searchResource()">Search</button>
-            </div>
-          </Form>
-          <table>
-            <tr>
-              <td>
-              </td>
-            </tr>
-          </table>
+          </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="fetching == true">
-      <center>
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="col">
+        <div class="container">
+          <div *ngIf="fetching == true">
+            <center>
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </center>
+          </div>
+          <br>
+          <div *ngIf="isData == true && fetching==false">
+            <mat-table class="table lessons-table mat-elevation-z8" [dataSource]="users">
+
+              <ng-container matColumnDef="sno">
+                <mat-header-cell *matHeaderCellDef>Serial No.</mat-header-cell>
+                <mat-cell *matCellDef="let i = index">{{i+1}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="created_at">
+                <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+                <mat-cell *matCellDef="let lesson">{{lesson.dateTime}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="full_text">
+                <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                <mat-cell class="description-cell" *matCellDef="let lesson">{{lesson.full_text}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="phoneNo">
+                <mat-header-cell *matHeaderCellDef>Phone No</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let lesson">
+                  <mat-list>
+                    <mat-list-item *ngFor="let item of lesson.phoneNo">
+                      <mat-icon color="primary">play_arrow</mat-icon>
+                      {{ item }}
+                    </mat-list-item>
+                  </mat-list>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+            </mat-table>
+          </div>
         </div>
-      </center>
-    </div>
-    <br>
-    <div *ngIf="isData == true && fetching==false">
-      <mat-table class="table lessons-table mat-elevation-z8" [dataSource]="users">
-
-        <ng-container matColumnDef="sno">
-          <mat-header-cell *matHeaderCellDef>Serial No.</mat-header-cell>
-          <mat-cell *matCellDef="let i = index">{{i+1}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="created_at">
-          <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
-          <mat-cell *matCellDef="let lesson">{{lesson.dateTime}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="full_text">
-          <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-          <mat-cell class="description-cell" *matCellDef="let lesson">{{lesson.full_text}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="phoneNo">
-          <mat-header-cell *matHeaderCellDef>Phone No</mat-header-cell>
-          <mat-cell class="duration-cell" *matCellDef="let lesson">
-            <mat-list>
-              <mat-list-item *ngFor="let item of lesson.phoneNo">
-                <mat-icon color="primary">play_arrow</mat-icon>
-                {{ item }}
-              </mat-list-item>
-            </mat-list>
-          </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-      </mat-table>
-
-
+      </div>
     </div>
   </div>
 
