@@ -22,7 +22,7 @@
       <a class="navbar-brand" href="#">COVID Resources</a>
     </div>
   </nav>
-  <div class="container-fluid mt-1">
+  <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-md-3 col-sm-12">
         <div class="card customCard">
@@ -51,11 +51,13 @@
       <div class="col">
         <div class="container">
           <div *ngIf="fetching == true">
-            <center>
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div class="position-relative mt-5">
+              <div class="position-absolute top-50 start-50 translate-middle">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
-            </center>
+            </div>
           </div>
           <br>
           <div *ngIf="isData == true && fetching==false">
