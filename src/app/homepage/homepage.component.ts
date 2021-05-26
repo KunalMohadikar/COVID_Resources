@@ -62,14 +62,13 @@ export class HomepageComponent implements OnInit {
   cardStyle: string = "margin: auto";
 
   constructor(private http : HttpClient) {
+  }
+
+  ngOnInit(): void {
     let commonUtils = new CommonUtils();
     this.isMobile = commonUtils.isMobileDevice();
     this.states = csc.getStatesOfCountry('IN');
     console.log(this.states);
-  }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   onStateChange(){

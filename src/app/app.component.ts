@@ -18,6 +18,9 @@ import csc from 'country-state-city'
 
 export class AppComponent {
 
+  homepage: string = "";
+  about: string = "about";
+
   constructor(private http : HttpClient) {
   }
 

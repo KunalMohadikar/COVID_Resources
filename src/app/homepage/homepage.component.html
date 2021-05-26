@@ -4,30 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COVID Resources</title>
 
 
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">COVID Resources</a>
-    </div>
-  </nav>
   <div class="container-fluid mt-2">
     <div class="row">
       <div *ngIf="isFirstFetch" style="text-align: center;">
         <br>
         <br>
-        <h3>Welcome to COVID Resources</h3>
+        <h3>Find COVID Resources here</h3>
         <br>
         <br>
         <br>
       </div>
       <div class="col-md-3 col-sm-12" [style]="cardStyle">
-        <div class="card customCard">
+        <div class="card border-primary customCard">
           <div class="card-body">
             <div>
                 <!-- <div class="form-floating mb-3">
@@ -165,6 +160,3 @@
 </body>
 
 </html>
-
-
-<router-outlet></router-outlet>

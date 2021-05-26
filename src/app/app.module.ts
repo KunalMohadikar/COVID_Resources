@@ -21,11 +21,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HomepageComponent } from './homepage/homepage.component';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    NopagefoundComponent
   ],
   imports: [
     BrowserModule,
