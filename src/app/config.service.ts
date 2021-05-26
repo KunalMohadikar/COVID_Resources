@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Users } from './common/users';
+import { APIResource } from './common/apiresources';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,6 @@ export class ConfigService {
     console.log('returning http object');
     // const params = new HttpParams()
     // .set('location', this.location);
-    return this.http.get<Users[]>(this.url);
+    return this.http.get<APIResource[]>(this.url);
   }
 }

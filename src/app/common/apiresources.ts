@@ -1,6 +1,6 @@
 import { DateHelper } from "./datehelper";
 
-export class Users
+export class APIResource
 {
     created_at: string;
     full_text:string;

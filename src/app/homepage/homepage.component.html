@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>COVID Resources</title>
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">COVID Resources</a>
+    </div>
+  </nav>
+  <div class="container-fluid mt-2">
+    <div class="row">
+      <div *ngIf="isFirstFetch" style="text-align: center;">
+        <br>
+        <br>
+        <h3>Welcome to COVID Resources</h3>
+        <br>
+        <br>
+        <br>
+      </div>
+      <div class="col-md-3 col-sm-12" [style]="cardStyle">
+        <div class="card customCard">
+          <div class="card-body">
+            <div>
+                <!-- <div class="form-floating mb-3">
+                  <input type="text" class="form-control" aria-label="location" aria-describedby="basic-addon1"
+                    placeholder="example: Pune" [(ngModel)]="location" id='location'>
+                  <label for="location">Location</label>
+                </div> -->
+                <ng-select class="custom" [items]="states"
+                  placeholder="Select State"
+                  bindLabel="name"
+                  [multiple]="false1"
+                  [searchable]="true1" 
+                  [clearable]="true1"
+                  [(ngModel)]="state"
+                  (change)="onStateChange()"
+                  (clear)="onStateClear()">
+                </ng-select>
+                <ng-select class="custom" [items]="cities"
+                  placeholder="Select City"
+                  bindLabel="name"
+                  [multiple]="false1"
+                  [searchable]="true1" 
+                  [clearable]="true1"
+                  [(ngModel)]="city">
+                </ng-select>
+                <ng-select class="custom" [items]="resources"
+                  placeholder="Select Resource"
+                  bindLabel="name"
+                  [multiple]="false1"
+                  [searchable]="true1" 
+                  [clearable]="true1"
+                  [(ngModel)]="resource"
+                  (change)="onResourceChange()"
+                  (clear)="onResourceClear()">
+                </ng-select>
+                <br>
+                <div *ngIf="otherResource">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" aria-label="resource" id='resource'
+                      aria-describedby="basic-addon1" placeholder="example: Oxygen" [(ngModel)]="resc">
+                    <label for="resource">Other Resource</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1"></div>
+                  <button class="col-10 btn btn-primary" (click)="searchResource()">Search</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" *ngIf="isFirstFetch == false">
+        <div class="container">
+          <div *ngIf="fetching == true">
+            <div class="position-relative mt-5">
+              <div class="position-absolute top-50 start-50 translate-middle">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div *ngIf="isData == true && fetching==false && isMobile == false">
+            <mat-table class="lessons-table mat-elevation-z8" [dataSource]="apiResources">
+
+              <ng-container matColumnDef="sno">
+                <mat-header-cell *matHeaderCellDef>Serial No.</mat-header-cell>
+                <mat-cell *matCellDef="let i = index">{{i+1}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="created_at">
+                <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+                <mat-cell *matCellDef="let lesson">{{lesson.dateTime}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="full_text">
+                <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                <mat-cell class="description-cell" *matCellDef="let lesson">{{lesson.full_text}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="phoneNo">
+                <mat-header-cell *matHeaderCellDef>Phone No</mat-header-cell>
+                <mat-cell class="duration-cell" *matCellDef="let lesson">
+                  <mat-list>
+                    <mat-list-item *ngFor="let item of lesson.phoneNo">
+                      <mat-icon color="primary">play_arrow</mat-icon>
+                      {{ item }}
+                    </mat-list-item>
+                  </mat-list>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+            </mat-table>
+          </div>
+
+          <div *ngIf="isData == true && fetching==false && isMobile == true">
+            <div *ngFor="let resource of apiResources">
+              <div class="card card1">
+                <div class="card-body">
+                  <div><b style="font-weight: 500;">Created:</b> {{resource.dateTime}}</div>
+                  <div><p class = "cardHeader">Description:</p>
+                    <div>
+                      {{resource.full_text}}
+                    </div>
+                  </div>
+                  <div><p class = "cardHeader">Phone No:</p>
+                    <mat-list>
+                      <mat-list-item *ngFor="let item of resource.phoneNo">
+                        <mat-icon color="primary">play_arrow</mat-icon>
+                        {{ item }}
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: center;" *ngIf="isData == false && fetching==false && isFirstFetch==false">
+            <h5>No Data Found</h5>
+            <h6 style="font-weight: normal;">Try Another Location or Resource</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
+
+
+<router-outlet></router-outlet>

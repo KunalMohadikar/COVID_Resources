@@ -20,10 +20,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
