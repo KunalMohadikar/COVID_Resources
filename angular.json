@@ -36,7 +36,6 @@
             ],
             "scripts": [
               "./node_modules/hammerjs/hammer.min.js"
-              
             ]
           },
           "configurations": {
@@ -102,7 +101,9 @@
               "src/styles.css",
               "node_modules/igniteui-angular/styles/igniteui-angular.css"
             ],
-            "scripts": [ "./node_modules/hammerjs/hammer.min.js"]
+            "scripts": [
+              "./node_modules/hammerjs/hammer.min.js"
+            ]
           }
         },
         "lint": {
@@ -129,6 +130,10 @@
               "devServerTarget": "covid:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "india-covid-resources"
+  },
+  "targets": {
+    "india-covid-resources": {
+      "hosting": {
+        "covid": [
+          "india-covid-resources"
+        ]
+      }
+    }
+  }
+}
