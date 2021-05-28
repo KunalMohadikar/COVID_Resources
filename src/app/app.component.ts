@@ -8,7 +8,6 @@ import { DateHelper } from './common/datehelper';
 import { stringify } from '@angular/compiler/src/util';
 import { CommonUtils } from 'src/util/commonUtils';
 import { LastUpdated } from './common/lastupdated';
-import csc from 'country-state-city'
 
 @Component({
   selector: 'app-root',

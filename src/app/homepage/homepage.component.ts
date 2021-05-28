@@ -7,7 +7,7 @@ import { APIResource } from '../common/apiresources';
 import { DateHelper } from '../common/datehelper';
 import { stringify } from '@angular/compiler/src/util';
 import { CommonUtils } from 'src/util/commonUtils';
-import csc from 'country-state-city'
+import { StateCity } from '../common/statecity';
 
 @Component({
   selector: 'app-homepage',
@@ -61,19 +61,22 @@ export class HomepageComponent implements OnInit {
   otherResource: boolean = false;
   cardStyle: string = "margin: auto";
 
+  cs: StateCity = new StateCity();
+
   constructor(private http : HttpClient) {
   }
 
   ngOnInit(): void {
     let commonUtils = new CommonUtils();
     this.isMobile = commonUtils.isMobileDevice();
-    this.states = csc.getStatesOfCountry('IN');
+    // this.states = csc.getStatesOfCountry('IN');
+    this.states = this.cs.getStates();
     console.log(this.states);
   }
 
   onStateChange(){
     if(this.state!=null){
-      this.cities = csc.getCitiesOfState(this.state.countryCode,this.state.isoCode);
+      this.cities = this.cs.getCitiesOfState(this.state.name);
       this.city = null;
       console.log("state changed: ");
       console.log(this.state);
