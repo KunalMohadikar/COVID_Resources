@@ -2271,7 +2271,7 @@ export class StateCity{
                 name: e
             });
         })
-        console.log(uniqueStates);
+        // console.log(uniqueStates);
         return uniqueStates;
     }
 

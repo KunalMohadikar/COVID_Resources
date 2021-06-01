@@ -71,7 +71,7 @@ export class HomepageComponent implements OnInit {
     this.isMobile = commonUtils.isMobileDevice();
     // this.states = csc.getStatesOfCountry('IN');
     this.states = this.cs.getStates();
-    console.log(this.states);
+    // console.log(this.states);
   }
 
   onStateChange(){

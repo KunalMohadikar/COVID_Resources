@@ -23,6 +23,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { AboutComponent } from './about/about.component';
+import { StoreModule } from '@ngrx/store';
+import { covidReducer } from './state/covidState/covid.reducer';
+import { appReducer } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import { AboutComponent } from './about/about.component';
     MatListModule,
     MatIconModule,
     NgSelectModule,
+    StoreModule.forRoot(appReducer)
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]

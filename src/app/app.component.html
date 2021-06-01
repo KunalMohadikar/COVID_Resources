@@ -27,4 +27,26 @@
       </div>
     </div>
 </nav>
+<div class="text-center covid-banner">
+  <div>
+    <div class="row">
+      <div class="col-md-3">
+        Date: {{latestDayInfo?.date}}
+      </div>
+      <div class="col-md-3">
+        Confirmed: {{latestDayInfo?.dailyconfirmed}}
+      </div>
+      <div class="col-md-3">
+        Recovered: {{latestDayInfo?.dailyrecovered}}
+      </div>
+      <div class="col-md-3">
+        Death: {{latestDayInfo?.dailydeceased}}
+      </div>
+    </div>
+  </div>
+  <!-- <h5 style="font-size: 20;">Date: {{latestDayInfo?.date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Confirmed: {{latestDayInfo?.dailyconfirmed}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Recovered: {{latestDayInfo?.dailyrecovered}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Death: {{latestDayInfo?.dailydeceased}}</h5> -->
+</div>
 <router-outlet></router-outlet>
